@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import React, { useRef, useState} from "react"
+import { Form, Button, Card} from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import Header from './Header'
+import Footer from './Footer'
 
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
-  const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
@@ -16,37 +16,41 @@ export default function Login() {
     e.preventDefault()
 
     try {
-      setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
       history.push("/")
     } catch {
-      setError("Failed to log in")
+      alert("Failed to log in");
     }
-
     setLoading(false)
   }
+  
+ 
+ 
 
   return (
     <>
     <Header />
     
-      <Card className="align-items-center shadow-lg mt-lg-5 mt-sm-5 mt-md-5" style={{ height: '55vh',width:"50vw", marginLeft:"25%" }} >
+      <Card className="align-items-center " style={{ height: '55vh',width:"50vw", marginLeft:"25%" }} >
         <Card.Body >
           <h2 className="text-center mb-4">Log In</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required  placeholder="Enter Email"/>
+              <Form.Control type="email" ref={emailRef} required placeholder="Enter Email"/>
             </Form.Group>
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required placeholder="Min Length 6 characters" />
+              <Form.Control type="password" ref={passwordRef} required placeholder="Enter Password" />
             </Form.Group>
             <Button disabled={loading} className="w-100 mt-2" type="submit">
               Log In
             </Button>
+            <Link to="/AdminLogin">
+            <Button disabled={loading} className="w-100 mt-2" type="submit">
+              Log In As Admin
+            </Button></Link>
           </Form>
           <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
@@ -56,7 +60,7 @@ export default function Login() {
       </div>
         </Card.Body>
       </Card>
-      
+      <Footer />
     </>
-  )
+  );
 }

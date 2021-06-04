@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
 import Header from './Header'
+import Footer from './Footer'
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -38,7 +39,7 @@ export default function ForgotPassword() {
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control type="email" ref={emailRef} required placeholder="Enter Email" />
             </Form.Group>
             <Button disabled={loading} className="w-100 mt-2" type="submit">
               Reset Password
@@ -52,7 +53,7 @@ export default function ForgotPassword() {
       </div>
         </Card.Body>
       </Card>
-      
+      <Footer />
     </>
   )
 }

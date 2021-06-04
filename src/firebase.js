@@ -1,14 +1,17 @@
-import firebase from "firebase/app"
+import firebase from "firebase"
+import 'firebase/firestore'
 import "firebase/auth"
 
-const app = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID
+var firebaseApp = firebase.initializeApp({
+  apiKey: "AIzaSyBjmHeRajO2FGJ48xsNUvbaibRyNUp1cB4",
+    authDomain: "temp-b2e0d.firebaseapp.com",
+    databaseURL: "https://temp-b2e0d-default-rtdb.firebaseio.com",
+    projectId: "temp-b2e0d",
+    storageBucket: "temp-b2e0d.appspot.com",
+    messagingSenderId: "327849470486",
+    appId: "1:327849470486:web:dff061207d43d00ebb6337",
+    measurementId: "G-8YMTB8EQ7P"
 })
-
-export const auth = app.auth()
-export default app
+var db = firebaseApp.firestore()
+export const auth = firebaseApp.auth()
+export {db};

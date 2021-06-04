@@ -1,27 +1,27 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Card} from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import Header from './Header'
+import Footer from './Footer'
 
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
   const { currentUser, updatePassword, updateEmail } = useAuth()
-  const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
   function handleSubmit(e) {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match")
+      return alert("Passwords do not match")
     }
 
     const promises = []
     setLoading(true)
-    setError("")
+  
 
     if (emailRef.current.value !== currentUser.email) {
       promises.push(updateEmail(emailRef.current.value))
@@ -35,7 +35,7 @@ export default function UpdateProfile() {
         history.push("/")
       })
       .catch(() => {
-        setError("Failed to update account")
+        alert("Failed to update account")
       })
       .finally(() => {
         setLoading(false)
@@ -45,17 +45,16 @@ export default function UpdateProfile() {
   return (
     <>
     <Header />
-      <Card className="align-items-center shadow-lg mt-lg-5 mt-sm-5 mt-md-5" style={{ height: '55vh',width:"50vw", marginLeft:"25%" }}>
+      <Card className="align-items-right" style={{ height: '55vh',width:"50vw", marginLeft:"25%" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Update Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
+          
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
                 ref={emailRef}
-                placeholder="Enter Email"
                 required
                 defaultValue={currentUser.email}
               />
@@ -76,7 +75,7 @@ export default function UpdateProfile() {
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group>
-            <Button disabled={loading} className="w-100  mt-2" type="submit">
+            <Button disabled={loading} className="w-100" type="submit">
               Update
             </Button>
           </Form>
@@ -85,7 +84,7 @@ export default function UpdateProfile() {
       </div>
         </Card.Body>
       </Card>
-      
+      <Footer />
     </>
   )
 }
