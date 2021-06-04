@@ -5,7 +5,7 @@ import firebase from 'firebase'
 import Header from '../../components/Header'
 import { FaArrowRight } from "react-icons/fa";
 import "./cart.css"
-import Checkout from '../Checkout';
+
 
 class CartApp extends React.Component {
   constructor() {
