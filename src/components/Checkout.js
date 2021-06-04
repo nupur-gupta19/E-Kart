@@ -1,10 +1,17 @@
 import React from 'react'
+import { Button} from "react-bootstrap"
 
-export default function Checkout() {
+function Checkout() 
+{
     return (
-        <div>
-            <h2> Your Payment is successfull!!!</h2>
-           
+        <>
+         <div className=" text-center " style={{ marginTop:'20%' }}>
+             <h3>Your payment is successful!!</h3>
+            <Button  href="/" className="btn-success">
+              Done
+            </Button>
         </div>
-    )
+        </>
+      )
 }
+export default Checkout;

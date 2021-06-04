@@ -5,6 +5,7 @@ import firebase from 'firebase'
 import Header from '../../components/Header'
 import { FaArrowRight } from "react-icons/fa";
 import "./cart.css"
+import Checkout from '../Checkout';
 
 class CartApp extends React.Component {
   constructor() {
@@ -148,7 +149,7 @@ class CartApp extends React.Component {
         <hr></hr>
          <div className="bg-white" style={{padding:"9px",marginTop:"8px"}}>The Total Amount<span className="mx-5" >${this.getcartTotal()}</span></div>
          <br></br>
-         <button className="w-50 mx-2 mb-1 checkout-btn">Checkout</button>
+         <a  href="/checkout"><button className="w-50 mx-2 mb-1 checkout-btn">Checkout</button></a>
          <br></br>
          <p className="mx-2 mb-1 mb-4 mt-3" style={{fontSize:"18px",marginTop:"10px"}}><a href="/product" style={{textDecoration:"none",color:"black"}}>Continue Shopping</a>
          <FaArrowRight style={{marginLeft:"5px"}}/></p>

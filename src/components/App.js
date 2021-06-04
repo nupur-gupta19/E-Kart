@@ -20,7 +20,7 @@ import Cart from "./Cart/CartApp"
 import Product from"./Product/Product"
 import ProductUi from"./Product/ProductUi"
 import AdminLogin from "./Admin/AdminLogin.js"
-
+import Checkout from"./Checkout"
 
 function App() {
   return (
@@ -41,12 +41,12 @@ function App() {
               <Route className="w-50" path="/electronics" component={Electronics} />
               <Route className="w-50" path="/Admin_product" component={Admin_product} />
               <Route className="w-50" path="/Admin_contact" component={Admin_contact} />
-              <PrivateRoute className="w-50" path="/cart-app" component={Cart} />
+              <Route className="w-50" path="/cart-app" component={Cart} />
               <Route className="w-50" path="/product" component={Product} />
               <Route className="w-50" path="/product-ui" component={ProductUi} />
               <Route className="w-50" path="/AdminLogin" component={AdminLogin} />
               <Route className="w-50" path="/logout" component={Logout} />
-
+              <PrivateRoute className="w-50" path="/checkout" component={Checkout} />
             </Switch>
           </AuthProvider>
           
