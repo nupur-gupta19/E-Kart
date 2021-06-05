@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from "react"
-import { Table,Modal,Button,Form} from 'react-bootstrap';
+import {Table,Modal,Button,Form} from 'react-bootstrap';
 import "./Admin_home.css"
 import {db} from '../../firebase'
 import Admin_navbar from './Admin_navbar'
@@ -133,7 +133,7 @@ function Example() {
       <dl className="menu_list">
           <dd className="menu_heading">Menu</dd>
           <dd><a href="/Admin_product" style={{color:"#bd965b"}} className="admin_link">Add Product</a></dd>
-          <dd><a>Check Order</a></dd>
+          
           <dd><a href="/Admin_contact" className="admin_link">Contact Us</a></dd>
       </dl>
       </div>
