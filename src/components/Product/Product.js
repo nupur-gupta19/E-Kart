@@ -29,16 +29,17 @@ class Product extends React.Component
     }  
     
     
-     componentDidMount() {
-            db.collection("products").onSnapshot(snapshot => {
-              const products = snapshot.docs.map(doc => {
-                const data = doc.data();
-                data["id"] = doc.id;
-                return data;
-              });
-              this.setState({ products: products});
-            });
-          }
+    componentDidMount() {
+      db.collection("products").onSnapshot(snapshot => {
+        const products = snapshot.docs.map(doc => {
+          const data = doc.data();
+          data["id"] = doc.id;
+          data.where("category").equalTo("fashion")
+          return data;
+        });
+        this.setState({ products: products});
+      });
+    }
       
       
     render()
