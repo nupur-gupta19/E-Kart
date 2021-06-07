@@ -1,6 +1,7 @@
 .small-container{
     position: relative;
 }
+/* Button */
 .middle {
     transition: .5s ease;
     opacity: 0;
@@ -10,23 +11,24 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-
 }
-  .men-image{
+/* men and women images */
+.men-image{
     opacity: 1;
     display: block;
     height: auto;
     transition: .5s ease;
     backface-visibility: hidden;
-  }
-  .women-image{
+}
+.women-image{
     opacity: 1;
     display: block;
     height: auto;
     transition: .5s ease;
     backface-visibility: hidden;
-  }
-  .text {
+}
+/* Button text */
+.text {
   background-color: black;
   color: white;
   font-size: 16px;
@@ -37,17 +39,17 @@
     background-color: #333333;
     font-size: 18px;
 }
+/* Hover on image and button */
 .small-container:hover .men-image {
     opacity: 0.65;
-  }
-  .small-container:hover .women-image {
+}
+.small-container:hover .women-image {
     opacity: 0.65;
-  }
-  
+}
 .small-container:hover .middle {
     opacity: 1;
-    
-  }
+}
+
  /* footer */
 .linkStyle{
   text-decoration: none;
@@ -56,7 +58,7 @@
 .linkStyle:hover{
     font-size: 17px;
     color:burlywood;
-  }
+}
 
 
 

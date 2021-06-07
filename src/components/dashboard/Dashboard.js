@@ -1,32 +1,33 @@
-import './Dashboard.css';
+import React from 'react';
+import './Dashboard.css'; // css for dashboard page imported
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
+// Images are imported from assets  
 import im1 from '../../assets/img1.jpg'
 import im2 from '../../assets/img2.jpg'
 import im3 from '../../assets/img3.jpg'
 import im4 from '../../assets/img4.jpg'
-import Header from '../Header'
-import Footer from '../Footer'
-
-import { FaTruck} from 'react-icons/fa';
-import {FaLifeRing} from 'react-icons/fa';
-import {FaCreditCard} from 'react-icons/fa';
-import {FaReply} from 'react-icons/fa';
-
 import ban1 from '../../assets/ban1.jpg'
 import ban2 from '../../assets/ban2.jpg'
 import ban3 from '../../assets/ban3.jpg'
 import ban4 from '../../assets/ban4.jpg'
 import ban5 from '../../assets/ban5.jpg'
-
+// header and footer imported
+import Header from '../Header'
+import Footer from '../Footer'
+// React icons are imported
+import { FaTruck} from 'react-icons/fa';
+import {FaLifeRing} from 'react-icons/fa';
+import {FaCreditCard} from 'react-icons/fa';
+import {FaReply} from 'react-icons/fa';
 
 
 function App() {
   return (
     <div className="App" style={{backgroundColor:" #e1e5ea"}}>
-     
+      {/* Header is imported from Header.js */}
       <Header />
-      {/* CROUSEL */}
+      {/* CROUSEL  */}
       <AliceCarousel autoPlay="true" autoPlayInterval="2000" disableButtonsControls="true" disableDotsControls="true" infinite>
       <img src={im1}alt="Slider1" className="sliderimg"/>
       <img src={im2} alt="Slider2"className="sliderimg"/>
@@ -95,6 +96,7 @@ function App() {
          </div>
 
        </section>
+       {/* Footer is imported from Footer.js */}
       <Footer />
     </div>
   );

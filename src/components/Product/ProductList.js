@@ -2,15 +2,17 @@ import React from 'react'
 import ProductUi from'./ProductUi'
 
 const  ProductList=(props) =>
+//we are recieving data here in constant called products using props from app.js
 {
    const { products } = props;
     return (
       
         <div className="productList">
-        {
-        products.map((product) =>  {
+           {/* //iterating through prductList// */}
+        {products.map((product) =>  {
          return(
             <ProductUi
+             //we are passing props to ProductUi
               key={product.key}
               product={product}
               category={product.category} 

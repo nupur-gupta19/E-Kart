@@ -114,13 +114,38 @@ function Example() {
           let products = pro;
           products[index] = updatedProduct;
           setPro(products);
+          alert("Changes have been made sucessfully !!");
+          
         })
+        .catch(() => {
+          alert("Changes cannot be made !!");
+        });
       }
       
        setEditPrice("");
        setEditQty("");
        setLgShow(false);
      }
+
+     //delete data
+     const deleteData = async ()=>{
+  let docId = "";
+  const res = db.collection("products");
+  const data = await res.get();
+  data.docs.forEach((item) => {
+    // console.log(item.data());
+    if(item.data().key == editKey) {
+      docId = item.id;
+    }
+  })
+  if(docId != "") {
+    await res.doc(docId).delete()
+    .then(() => {
+      alert("Product Deleted!!");
+    })
+ }
+}
+
 
     return (
       <>
@@ -171,7 +196,7 @@ function Example() {
               <td>{products.qty}</td>
               {/* <td>{products.img}</td> */}
               <td><Button onClick={() => onEditButtonClicked(products.key)} className="btn-dark">Edit</Button></td>
-              <td><Button className="btn-dark">Delete</Button></td>
+              <td><Button className="btn-dark" onClick={() => deleteData(products.key)}>Delete</Button></td>
             </tr> 
             
         )}
@@ -240,17 +265,18 @@ function Example() {
       </Modal>
       
        <Modal
-        size="lg"
+        
         show={lgShow}
         onHide={() => setLgShow(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
-centered
+       
+        aria-labelledby="example-modal-sizes-title-lg" 
+        centered
       >
         
         <Modal.Header closeButton>
           <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>
-          <Modal.Title id="example-modal-sizes-title-lg">
+          <Modal.Body id="example-modal-sizes-title-lg">
           <Form.Group id="price">
               <Form.Label>Price</Form.Label>
               <Form.Control type="text"  required placeholder="Enter Price"  value={editPrice} onChange={(e) => setEditPrice(e.target.value)}/>
@@ -262,13 +288,13 @@ centered
             <Button onClick={setEditChanges} className="w-100 mt-3"  style={{ background: loader ? 'afb9c8' : '#34656d' }} type="submit">
               Submit
             </Button>
-          </Modal.Title>
+          </Modal.Body>
         
-        {/* <Modal.Body>..byer.</Modal.Body> */}
+        
       </Modal>
 </> 
 
     );
       
 }
-export default Example;
+export default Example

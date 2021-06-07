@@ -1,7 +1,8 @@
 import React from "react";
-import { Navbar, Nav,NavDropdown,Button} from 'react-bootstrap';
-import { FaShoppingCart} from 'react-icons/fa';
+import { Navbar,Nav,NavDropdown,Button} from 'react-bootstrap';
+import { FaShoppingCart} from 'react-icons/fa'; //react-icons is imported
 
+// styling for cartCount 
 const styles = {
     cartCount: {
         background: 'white',
@@ -12,26 +13,25 @@ const styles = {
         marginLeft:'19%',
       }
 }
+
 const Head = (props) => {
     let user= JSON.parse(localStorage.getItem('user-info'))
     console.warn(user)
 
-
-    
     return (
 
- <div>
-<div className="row my-5">
-        
+    <div>
+       <div className="row my-5">
+           {/* NAVBAR */}
             <Navbar bg="dark" variant="dark" expand="lg" scrolling fixed="top" >
                 <Navbar.Brand href="/" className="mx-3">E-Kart</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <div className="col-md-4">
                     <Nav className="mr-auto">
-                    <Nav.Link href="/" className="mx-2">Home</Nav.Link>
-                    <Nav.Link href="/contact-us" className="mx-2">Contact Us</Nav.Link>
-                    <Nav.Link href="/about-us" className="mx-2">About Us</Nav.Link>
+                    <Nav.Link href="/" className="mx-2"> Home </Nav.Link>
+                    <Nav.Link href="/contact-us" className="mx-2"> Contact Us </Nav.Link>
+                    <Nav.Link href="/about-us" className="mx-2"> About Us </Nav.Link>
                     <NavDropdown title="Category" id="basic-nav-dropdown" className="mx-2">
                         <NavDropdown.Item href="/fashion">Fashion</NavDropdown.Item>
                         <NavDropdown.Item href="/electronics">Electronics</NavDropdown.Item>
@@ -51,17 +51,11 @@ const Head = (props) => {
                     <Button variant="outline-light" href="/cart-app" className="mx-2"><FaShoppingCart /></Button>
                     <span style={styles.cartCount}>{props.count}</span>
                     </Nav>
-                    
                     </div>
-                
-                </Navbar.Collapse>
-                
-                
+                </Navbar.Collapse>  
             </Navbar>
-            
-        
-    </div>
- </div>
+        </div>
+   </div>
    
     );
 }

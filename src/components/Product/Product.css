@@ -10,11 +10,11 @@
 .product-img{
   padding: 20px;
   border-radius: 15%;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 /* BUTTONS */
 
+/* Add to cart btn */
 .addtocart-btn,.heart-btn,.detail-btn{
     border:none;
     padding: 9px;
@@ -22,7 +22,6 @@
 }
 .addtocart-btn{
   background-color: #468e9be5;
-  /* background-color: #34656d; */
   color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
@@ -30,6 +29,7 @@
 .addtocart-btn:hover{
   background-color: teal;
 }
+/* Details btn */
 .detail-btn{
   background-color: #d8dce0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -38,6 +38,7 @@
   background-color: rgb(173, 175, 177);
   
 }
+/* Heart btn */
 .heart-btn{
   background-color: rgb(238, 56, 96);
   color: white;

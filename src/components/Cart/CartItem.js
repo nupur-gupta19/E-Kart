@@ -28,6 +28,7 @@ const CartItem = (props) => {
 
         {/* Quantity Buttons */}
         <div className=" mb-1 mt-1 d-flex" style={{textAlign:"center",fontSize:"20px"}}>
+        {/* product is sent to onIncreaseQuantity in cart via props */}
          <div className="" style={{borderLeft:"1px solid rgb(185, 183, 183)",borderTop:"1px solid rgb(185, 183, 183)",borderBottom:"1px solid rgb(185, 183, 183)",borderRadius:"7px 0px 0px 7px"}} ><HiPlus className="action-icons"  onClick={() => onIncreaseQuantity(product)}/> </div>
          <div className=""  style={{borderLeft:"1px solid rgb(185, 183, 183)",borderTop:"1px solid rgb(185, 183, 183)",borderBottom:"1px solid rgb(185, 183, 183)",borderRight:"1px solid rgb(185, 183, 183)",padding:"0px 7px 0px 7px"}}>{qty}</div>
          <div className="" style={{borderTop:"1px solid rgb(185, 183, 183)",borderBottom:"1px solid rgb(185, 183, 183)",borderRight:"1px solid rgb(185, 183, 183)",borderRadius:"0px 7px 7px 0px"}}><HiMinusSm  className="action-icons" onClick={() => onDecreaseQuantity(product)} /></div>
