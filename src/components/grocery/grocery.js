@@ -13,6 +13,7 @@ function Grocery() {
     <div className="grocery">
     <div className="shop">
     <a href="/product">
+      {/*  Button */}
     <button type="button" class="btn btn-dark">Shop Now!!</button>
     </a>
     </div>

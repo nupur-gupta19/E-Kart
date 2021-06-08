@@ -15,37 +15,40 @@ import banner1 from '../../assets/banner1.jpg' // Images are imported from asset
 
 class Product extends React.Component  
 {
-    constructor() 
-    {
-        super();
-        this.state = 
-        {
-          products: [],
-          openCollection: true,
-          open:true,
-          openBrand:true,
-          
-        };
-      
-    }  
-    
-    // DidMount Function used here to display products
-    componentDidMount() {
-      db.collection("products").onSnapshot(snapshot => {
-        const products = snapshot.docs.map(doc => {
-          const data = doc.data();
-          data["id"] = doc.id;
-          data.where("category").equalTo("fashion")
-          return data;
-        });
-        this.setState({ products: products});
-      });
-    }
+  constructor() {
+		super();
+		this.state = {
+			products: [],
+			openCollection: true,
+			open: true,
+			openBrand: true,
+			category: window?.location?.search?.split('?category=')?.[1],
+      loading: true,
+		};
+	}
+
+	// DidMount Function used here to display products and params are used to filter data
+	componentDidMount() {
+		db.collection('products').onSnapshot((snapshot) => {
+			const products = this.state.category
+				? snapshot.docs
+						.map((doc) => {
+							const data = doc.data();
+							return data;
+						})
+						.filter((item) => item.category === this.state.category)
+				: snapshot.docs.map((doc) => {
+						const data = doc.data();
+						return data;
+				  });
+			this.setState({ products: products ,loading:false });
+		});
+	}
       
       
     render()
     {
-        const { products} = this.state;
+        const { products ,loading} = this.state;
         const { openCollection,open,openBrand } = this.state; // used for collapse in collection,price & brand section 
         
     return(
@@ -53,7 +56,7 @@ class Product extends React.Component
 
     {/* Header is imported from Header.js */}
      <Header /> 
-
+     
       <div className="row col-md-12">
           <div className="col-md-3">
             {/* Product Menu */}
@@ -69,9 +72,9 @@ class Product extends React.Component
                     <div className="mb-3" >
                     <Collapse in={this.state.openCollection}>
                     <ul style={{listStyleType:"none",textAlign:"left",marginLeft:"35px",marginBottom:"30px"}}> 
-                      <li>Fashion <IoShirtOutline className="mx-2" /></li>
-                      <li>Electronics<GoDeviceDesktop className="mx-2" /></li>
-                      <li>Grocery<IoFastFoodOutline className="mx-2"/></li>
+                      <li><a href="/product?category=Fashion" style={{textDecoration: "none",color: "black"}}>Fashion </a><IoShirtOutline className="mx-2" /></li>
+                      <li><a href="/product?category=Electronics"style={{textDecoration: "none",color: "black"}}>Electronics</a><GoDeviceDesktop className="mx-2" /></li>
+                      <li><a href="/product?category=Grocery" style={{textDecoration: "none",color: "black"}}>Grocery</a><IoFastFoodOutline className="mx-2"/></li>
                     </ul>
                     </Collapse>
                     </div>
@@ -120,6 +123,7 @@ class Product extends React.Component
          </div>
           <div className="col-md-9">
           <div className="mx-2">
+          {loading && <h3>Loading Products...</h3>}
             {/* ProductList is imported here */}
             {/* we are passing props to ProductList */}
           <ProductList products={products} />  

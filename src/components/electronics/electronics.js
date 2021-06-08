@@ -29,11 +29,11 @@ function Electronics() {
                 </AliceCarousel>
             </div>
             <div className="categories">
-                <a href="/product">
+                <a href="/product?category=Electronics">
                     <img src={houseitem} className="images" alt="householdimg"></img>
                 </a>
 
-                <a href="/product">
+                <a href="/product?category=Electronics">
                     <img src={industryitem} className="images" alt="industrialimg"></img>
                 </a>
             </div>

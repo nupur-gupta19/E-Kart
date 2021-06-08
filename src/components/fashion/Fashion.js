@@ -20,14 +20,14 @@ function Fashion() {
                <div className="col-md-6 small-container">
                <img src={fashion1} className="img-fluid women-image" alt="women" style={{ objectFit:"cover"}}/>
                <div className="middle">
-               <a href="/product"><button className="text">Women</button></a>
+               <a href="/product?category=Fashion"><button className="text">Women</button></a>
                </div>
               </div>
                {/* Men image and button */}
               <div className=" col-md-6 small-container">
               <img src={fashion2} alt="men" className="img-fluid men-image" style={{ objectFit:"cover"}}/>
               <div className="middle">
-              <a href="/product"><button className="text">Men</button></a>
+              <a href="/product?category=Fashion"><button className="text">Men</button></a>
                </div>
               </div>
        </div>

@@ -19,6 +19,7 @@ export default function ForgotPassword() {
       setMessage("")
       setError("")
       setLoading(true)
+      
       await resetPassword(emailRef.current.value)
       setMessage("Check your inbox for further instructions")
     } catch {
@@ -31,8 +32,10 @@ export default function ForgotPassword() {
   return (
     <>
     <Header />
+    {/* contain all reset information */}
       <Card className="align-items-center shadow-lg mt-lg-5 mt-sm-5 mt-md-5" style={{ height: '55vh',width:"50vw", marginLeft:"25%" }}>
         <Card.Body >
+          {/* Password Reset Button */}
           <h2 className="text-center mb-4">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           {message && <Alert variant="success">{message}</Alert>}

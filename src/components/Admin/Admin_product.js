@@ -43,6 +43,7 @@ function Example() {
       .then(() => {
         handleClose(false);
         setLoader(false);
+        fetchPro();
         alert("Your product has been submitted👍");
       })
       .catch((error) => {
@@ -68,6 +69,7 @@ function Example() {
       fetchPro();
     });
      const fetchPro=async()=>{
+       setPro([]);
        const response=db.collection('products');
        const data=await response.get();
        data.docs.forEach(item=>{
@@ -89,24 +91,27 @@ function Example() {
      const setEditChanges = async () => {
       let index = -1;
       let docId = "";
+      // referring the firebase database with collection name products
       const res = db.collection("products");
       const data = await res.get();
-      // console.log("editkey = " + editKey);
+      //iterating the prducts received from database
       data.docs.forEach((item, i) => {
-        // console.log(item.data());
-
+      
+        // checking which product needs to be edited
         if(item.data().key == editKey) {
           docId = item.id;
           index = i;
         }
       }
       )
-      // console.log(docId);
+    
       if(docId != "") {
+        //updating the database with the changes received
         await res.doc(docId).update({
           price:editPrice,
           qty:editQty,
         })
+        //handling the success
         .then(() => {
           let updatedProduct = pro[index];
           updatedProduct.price = editPrice;
@@ -117,6 +122,7 @@ function Example() {
           alert("Changes have been made sucessfully !!");
           
         })
+        //handling the error
         .catch(() => {
           alert("Changes cannot be made !!");
         });
@@ -272,7 +278,7 @@ function Example() {
         aria-labelledby="example-modal-sizes-title-lg" 
         centered
       >
-        
+        {/* setting for the modal of the edit product */}
         <Modal.Header closeButton>
           <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>

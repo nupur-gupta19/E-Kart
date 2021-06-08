@@ -32,7 +32,7 @@ export default function Login() {
 
   var onSubmit = (e) => {
     e.preventDefault();
-    
+    // Using Firebase
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth()
     .signInWithPopup(provider)
@@ -60,7 +60,7 @@ export default function Login() {
     <>
     <Header />
      <div className="abc">
-     
+    {/* Button */}
             <Button disabled={loading} className="admin-btn mt-2 btn-light" type="submit"  onClick={onSubmit}>
               Login with Google
             </Button>

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card} from "react-bootstrap"
+import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import Header from './Header'
@@ -14,30 +14,37 @@ export default function UpdateProfile() {
   const history = useHistory()
 
   function handleSubmit(e) {
+    // this is to prevent reload of a page as reloading of a page is the default behavior
     e.preventDefault()
+      // for the confirmation of the password
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return alert("Passwords do not match")
     }
-
+      //promises handles the actions given to it
     const promises = []
+    //disables the 'upload button'
     setLoading(true)
   
-
+      //for the updation of the email
     if (emailRef.current.value !== currentUser.email) {
       promises.push(updateEmail(emailRef.current.value))
     }
+    // for the updation of the password
     if (passwordRef.current.value) {
       promises.push(updatePassword(passwordRef.current.value))
     }
-
+      //executing the promises
     Promise.all(promises)
       .then(() => {
+        //redirecting to homepage
         history.push("/")
       })
       .catch(() => {
+        //handling the error
         alert("Failed to update account")
       })
       .finally(() => {
+        //enabling the update button
         setLoading(false)
       })
   }
